@@ -1,7 +1,6 @@
 {
     "nominal_proportions": {"necessities":  {"rent":1690, 
                                             "transportation":120,
-                                            "hula":50,
                                             "personal care":0.015,
                                             "groceries":0.01,
                                             "wifi & software":0.006,
