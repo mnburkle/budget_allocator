@@ -6,7 +6,7 @@ usage: `python3 budget_allocator.py --t [total paycheck amount] --json [budget.j
 
 ## making your own budget JSON file
 
-I've provided an example budget json, and it has two components (keys): "nominal_proportions", and "savings_only_proportions". The nominal budget describes your entire budget, made up of "necessities" like rent and food and gas, "savings" either for retirement or short term emergencies or even vacations, and "discretionary" which are just for fun. "Savings only" mode is usually for the case where all your necessities are covered, and you're looking to put your paycheck towards either your savings or discretionary spending only. If you're just using this tool for the first time, you can ignore this. 
+I've provided an example budget json, and it has two components (keys): `nominal_proportions`, and `savings_only_proportions`. The nominal budget describes your entire budget, made up of `necessities` like rent and food and gas, `savings` either for retirement or short term emergencies or even vacations, and `discretionary` which are just for fun. "Savings only" mode is usually for the case where all your necessities are covered, and you're looking to put your paycheck towards either your savings or discretionary spending only. If you're just using this tool for the first time, you can ignore this. 
 
 Every field in the budget JSON can be either a proportion (p < 1.0), or an fixed value >= 1. I found this was the most flexible option to accommodate fixed costs like rent or internet, as well as more flexible categories like "savings" which are usually encouraged to be some percentage of your take-home pay. 
 
