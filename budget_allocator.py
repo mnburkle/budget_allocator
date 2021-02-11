@@ -31,7 +31,7 @@ def print_budget(budg, options=(0,0)):
 
 
 def allocate_salary(total, options=(0,0)):
-    (use_savings_scheme, current_month_covered) = options
+    (use_savings_scheme, _) = options
 
 
     with open("example_budgets.json") as f:
@@ -50,7 +50,7 @@ def allocate_salary(total, options=(0,0)):
                 budget_to_use[spending_type][category] = budget_to_use[spending_type][category]*total
             total_budgeted += budget_to_use[spending_type][category]
 
-    print("\nFinished first allocation - budgeted $" + str(total_budgeted))
+    print(f"\nAllocating salary of ${args.t}...\nFinished first allocation based on json proportions and absolute requirements...\nBudgeted: ${total_budgeted}")
     overbudgeted_handling_option = 4
     attempts = 1
     while(total_budgeted > (total+1) and overbudgeted_handling_option > 0):
@@ -152,16 +152,17 @@ def query_yes_no(question, default="yes"):
                              "(or 'y' or 'n').\n")
 
 if __name__ == '__main__':
-    print(f"this is a budget allocation tool that uses a preplanned budget (json) and allocates funds. \n\nif you the script overbudgets (aka you don't have enough money for it to fully allocate everything), it will ask you to scale down with varying degrees of leanness up until just paying for rent and nothing else.\n")
+    print(f"\nthis is a budget allocation tool that uses a preplanned budget (json) and allocates funds. \n\nif you the script overbudgets (aka you don't have enough money for it to fully allocate everything), it will ask you to scale down with varying degrees of leanness up until just paying for rent and nothing else.\n")
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--t', help='total amount to budget', type=float, required=True)
     parser.add_argument('--json', help='json file containing budget allocations', required=True)
+    parser.add_argument('--advanced', help='advanced budgeting if necessities are already covered for the month, include considerations for next month', action='store_true')
     args = parser.parse_args()
 
-    print(f"\nAllocating salary of ${args.t}")
-
-    options = choose_budget_scheme()
+    options = (0,0)
+    if(args.advanced):
+        options = choose_budget_scheme()
     budget = allocate_salary(args.t, options)
     print_budget(budget, options)
 
