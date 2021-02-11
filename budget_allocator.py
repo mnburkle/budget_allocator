@@ -70,16 +70,17 @@ def allocate_salary(total, options=(0,0)):
             print(f"    scaling down everything (besides rent) by {BUDGET_CATEGORY_DECAY_RATE}, attempt #{attempts}")
             for spending_type in budget_to_use:
                 for category in budget_to_use[spending_type]:
-                    if(category is not "rent"):
+                    if(category != "rent"):
                         budget_to_use[spending_type][category] = budget_to_use[spending_type][category]*BUDGET_CATEGORY_DECAY_RATE
                         max_dollars_per_category = budget_to_use[spending_type][category] if budget_to_use[spending_type][category] > max_dollars_per_category else max_dollars_per_category
                     total_budgeted += budget_to_use[spending_type][category]
             attempts += 1
+
         # LINEARLY SCALE ALL NON NECESSITIES
         elif(overbudgeted_handling_option == 2):
             for spending_type in budget_to_use:
                 for category in budget_to_use[spending_type]:
-                    if(spending_type is not "necessities"):
+                    if(spending_type != "necessities"):
                         budget_to_use[spending_type][category] = budget_to_use[spending_type][category]*BUDGET_CATEGORY_DECAY_RATE
                         max_dollars_per_category = budget_to_use[spending_type][category] if budget_to_use[spending_type][category] > max_dollars_per_category else max_dollars_per_category
                     total_budgeted += budget_to_use[spending_type][category]
@@ -87,7 +88,7 @@ def allocate_salary(total, options=(0,0)):
         elif(overbudgeted_handling_option == 3):
             for spending_type in budget_to_use:
                 for category in budget_to_use[spending_type]:
-                    if(spending_type is "discretionary" or category is "fun savings"):
+                    if(spending_type == "discretionary" or (spending_type == "savings" and category == "fun savings")):
                         budget_to_use[spending_type][category] = budget_to_use[spending_type][category]*BUDGET_CATEGORY_DECAY_RATE
                         max_dollars_per_category = budget_to_use[spending_type][category] if budget_to_use[spending_type][category] > max_dollars_per_category else max_dollars_per_category
                     total_budgeted += budget_to_use[spending_type][category]
