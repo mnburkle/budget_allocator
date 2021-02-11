@@ -2,6 +2,8 @@
 
 This is a budget allocator tool I made for when I get a pay check. It uses a json file with some budgeting requirements, and then takes the total amount in the pay check and tries to put it towards the provided budget. If the paycheck isn't enough to satisfy the requirements within the budget, then there are options for scaling down, including cutting out descretionary spending, reducing savings, or even cutting down on necessities. 
 
+usage: `python3 budget_allocator.py --t [total paycheck amount] --json [budget.json] [--advanced]`
+
 ## making your own budget JSON file
 
 I've provided an example budget json, and it has two components (keys): "nominal_proportions", and "savings_only_proportions". The nominal budget describes your entire budget, made up of "necessities" like rent and food and gas, "savings" either for retirement or short term emergencies or even vacations, and "discretionary" which are just for fun. "Savings only" mode is usually for the case where all your necessities are covered, and you're looking to put your paycheck towards either your savings or discretionary spending only. If you're just using this tool for the first time, you can ignore this. 
