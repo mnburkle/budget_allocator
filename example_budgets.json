@@ -11,7 +11,7 @@
                                             "saving for fun things":0.14},
                             "discretionary":{"weekend activities":0.025,
                                             "dining out":0.023,
-                                            "shopping": 0.085},
+                                            "shopping": 0.085}},
                                             
     "savings_only_proportions": {"savings":   {"retirement":0.40,
                                             "short term":0.05,
